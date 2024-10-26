@@ -34,6 +34,7 @@ FILE(GLOB RPLIDAR_SDK_SRC
   "${RPLIDAR_SDK_PATH}/src/dataunpacker/unpacker/*.cpp"
   "${RPLIDAR_SDK_PATH}/src/hal/*.cpp"
   "${RPLIDAR_SDK_PATH}/src/*.cpp"
+  merge_two_rplidar
 )
 endif()
 
@@ -44,6 +45,25 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
+
+
+################ FIND DEPENDENCIES  #################
+find_package(ament_cmake_python REQUIRED)   	# python (optional)
+find_package(rclpy REQUIRED)                	# python (optional)
+######################################################
+
+# Install Python Module
+ament_python_install_package(${PROJECT_NAME})
+
+# Install Python executables
+install(PROGRAMS
+
+scripts/merge_two_rplidar.py
+
+DESTINATION lib/${PROJECT_NAME}
+)
+
+
 
 ################################################################################
 # Build
