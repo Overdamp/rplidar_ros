@@ -35,6 +35,7 @@ FILE(GLOB RPLIDAR_SDK_SRC
   "${RPLIDAR_SDK_PATH}/src/hal/*.cpp"
   "${RPLIDAR_SDK_PATH}/src/*.cpp"
   merge_two_rplidar
+  lidar_filtered
 )
 endif()
 
@@ -59,6 +60,8 @@ ament_python_install_package(${PROJECT_NAME})
 install(PROGRAMS
 
 scripts/merge_two_rplidar.py
+scripts/lidar_filtered.py
+
 
 DESTINATION lib/${PROJECT_NAME}
 )
